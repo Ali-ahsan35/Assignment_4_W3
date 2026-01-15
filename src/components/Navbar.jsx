@@ -6,8 +6,7 @@ const Navbar = () => {
     <nav className="bg-gradient-to-r from-blue-600 to-blue-700 dark:from-gray-900 dark:to-gray-800 px-8 py-4 shadow-lg border-b border-blue-500 dark:border-gray-700">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         
-        {/* Logo + Title */}
-        <Link to="/" className="flex items-center gap-3 group">
+        <Link to="/" className="flex items-center gap-1 group">
           <img 
             src={logo} 
             alt="logo" 
@@ -49,7 +48,7 @@ const Navbar = () => {
             Tasks
           </Link>
 
-          {/* Theme Toggle Button */}
+          {/* Toggle Button */}
           <button
             className="p-2.5 rounded-lg bg-blue-500 dark:bg-gray-700 text-white
             hover:bg-blue-400 dark:hover:bg-gray-600 shadow-md hover:shadow-lg
@@ -58,7 +57,7 @@ const Navbar = () => {
             transition-all duration-200 transform hover:scale-105"
             aria-label="Toggle theme"
           >
-            {/* Sun Icon for Light Mode */}
+            {/* Sun Icon*/}
             <svg 
               className="w-5 h-5 hidden dark:block" 
               fill="none" 
@@ -72,7 +71,7 @@ const Navbar = () => {
                 d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" 
               />
             </svg>
-            {/* Moon Icon for Dark Mode */}
+            {/* Moon Icon*/}
             <svg 
               className="w-5 h-5 block dark:hidden" 
               fill="none" 
