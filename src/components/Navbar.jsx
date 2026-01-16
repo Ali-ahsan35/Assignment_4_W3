@@ -27,7 +27,7 @@ const Navbar = () => {
         </Link>
 
         {/* Navigation Buttons */}
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col md:flex-row lg:flex-row items-center gap-4">
           <Link
             to="/alltasks"
             className="flex items-center gap-2 rounded-lg bg-white text-blue-600 px-6 py-2.5

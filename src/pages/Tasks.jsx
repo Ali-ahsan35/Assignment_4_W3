@@ -42,7 +42,7 @@ const Tasks = () => {
 
   return (
     <div className="bg-[#94b3f7] dark:bg-[#0c1434] py-10">
-      <h1 className="text-2xl max-w-7xl mx-auto rounded-md font-bold  text-center bg-sky-600 dark:bg-gray-700 p-5 text-white">
+      <h1 className="text-2xl mx-10 max-w-7xl md:mx-auto rounded-md font-bold  text-center bg-sky-600 dark:bg-gray-700 p-5 text-white">
         ALL TASKS
       </h1>
 
