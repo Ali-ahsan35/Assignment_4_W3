@@ -42,13 +42,8 @@ const TaskCard = ({ task }) => {
         </h3>
 
         {/* Footer: User ID and View Details Button */}
-        <div className="flex items-center justify-between pt-3 border-t border-gray-200 dark:border-gray-600">
-          <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
-            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-            </svg>
-            User {task.userId}
-          </div>
+        <div className="flex items-center justify-end pt-3 border-t border-gray-200 dark:border-gray-600">
+          
 
           <Link
             to={`/tasks/${task.id}`}

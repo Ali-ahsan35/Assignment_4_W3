@@ -5,6 +5,7 @@ import {
 import Home from "../pages/Home";
 import NotFound from "../components/NotFound";
 import Tasks from "../pages/Tasks";
+import TaskDetailsCard from "../components/TaskDetailsCard";
 
 export const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ export const router = createBrowserRouter([
         {
             path:"/alltasks",
             element:<Tasks/>
+        },
+        {
+          path:"/tasks/:id",
+          element:<TaskDetailsCard />,
         }
     ]
   },
