@@ -41,8 +41,8 @@ const Tasks = () => {
   };
 
   return (
-    <div>
-      <h1 className="text-2xl max-w-7xl mx-auto rounded-md font-bold mt-10 text-center bg-sky-800 dark:bg-gray-800 p-5 text-white">
+    <div className="bg-[#94b3f7] dark:bg-[#0c1434] py-10">
+      <h1 className="text-2xl max-w-7xl mx-auto rounded-md font-bold  text-center bg-sky-600 dark:bg-gray-700 p-5 text-white">
         ALL TASKS
       </h1>
 
@@ -58,7 +58,7 @@ const Tasks = () => {
         </div>
       )}
 
-      <div className="flex justify-center mb-10 items-center gap-8">
+      <div className="flex justify-center  items-center gap-8">
         <button 
           disabled={currentPage === 1 || loading}
           onClick={handlePrevious}
@@ -71,8 +71,8 @@ const Tasks = () => {
         </button>
 
        <p className="text-gray-900 dark:text-gray-300 font-semibold text-base bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded">
-          Page <strong className="text-gray-900 dark:text-white">{currentPage}</strong> of&nbsp;
-          <strong className="text-gray-900 dark:text-white">{totalPages}</strong>
+          Page <strong className="text-gray-900 dark:text-white">{currentPage}</strong> of 
+          <strong className="text-gray-900 dark:text-white ml-1.5">{totalPages}</strong>
        </p>
 
         <button 

@@ -52,7 +52,7 @@ const TaskDetailsCard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-500 dark:bg-black py-12 px-4">
+    <div className="min-h-screen bg-gray-400 dark:bg-[#0c1434] py-12 px-4">
       <div className="max-w-3xl mx-auto">
         {/* Back Button */}
         <button
