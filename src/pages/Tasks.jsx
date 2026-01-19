@@ -48,6 +48,15 @@ const Tasks = () => {
     setSearchQuery(e.target.value);
   };
 
+  const handleToggleStatus = (taskId, newStatus) => {
+    // the tasks array
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === taskId ? { ...task, completed: newStatus } : task
+      )
+    );
+  };
+
   const handlePrevious = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
@@ -99,7 +108,7 @@ const Tasks = () => {
           <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-600"></div>
         </div>
       ) : filteredTasks.length === 0 ? (
-        // No results found message
+        // Task not found
         <div className="flex flex-col min-h-[45.8vh] items-center justify-center my-20 px-4">
           <svg
             className="w-24 h-24 text-gray-400 dark:text-gray-600 mb-4"
@@ -124,10 +133,14 @@ const Tasks = () => {
           </p>
         </div>
       ) : (
-        // Show tasks when found
+        //tasks found
         <div className="grid auto-rows-min min-h-[54.6vh] max-w-7xl mx-auto grid-cols-1 lg:grid-cols-4 md:grid-cols-2 my-10 gap-8 px-10 lg:px-0">
           {filteredTasks.map((task) => (
-            <TaskCard key={task.id} task={task} />
+            <TaskCard
+              key={task.id}
+              task={task}
+              onToggleStatus={handleToggleStatus}
+            />
           ))}
         </div>
       )}
