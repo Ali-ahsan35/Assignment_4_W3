@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 const Welcome = () => {
   return (
-    <div className="min-h-screen bg-[#94b3f7] dark:bg-[#0c1434]  flex items-center justify-center px-4">
+    <div className="min-h-[85.4vh] bg-[#94b3f7] dark:bg-[#0c1434]  flex items-center justify-center px-4">
       <div className="max-w-2xl text-center">
         <h1 className="text-5xl dark:text-white font-bold mb-6">
           Welcome to TaskManager
