@@ -25,7 +25,7 @@ The project emphasizes:
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 * **React** (Vite)
 * **Tailwind CSS v4**
@@ -46,14 +46,14 @@ The project emphasizes:
 
 ---
 
-## 🧠 Custom Hooks Used
+## Custom Hooks Used
 
 * **`useDebounce`** – Optimizes search input by delaying API/UI updates
 * **`useTheme`** – Manages theme state and persistence
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 TASK-MANAGER
@@ -104,7 +104,7 @@ TASK-MANAGER
 ## Screenshots
 
 ### Home (Light Mode)
-![Home Light](/public/screenshots/Home_light.png)
+![Home Light](/public/screenshots/Home_Light.png)
 
 ### Home (Dark Mode)
 ![Home Dark](/public/screenshots/Home_Dark.png)
@@ -153,7 +153,7 @@ npm run dev
 
 ---
 
-## 👤 Author
+## Author
 
 **Syed Ali Ahsan**
 
