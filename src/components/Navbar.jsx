@@ -58,9 +58,7 @@ const Navbar = () => {
             onClick={toggleTheme}
             className="p-2.5 rounded-lg bg-blue-500 dark:bg-gray-700 text-white
             hover:bg-blue-400 dark:hover:bg-gray-600 shadow-md hover:shadow-lg
-            focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2
-            focus:ring-offset-blue-600 dark:focus:ring-offset-gray-900
-            transition-all duration-200 transform hover:scale-105"
+            focus:outline-none transition-all duration-200 transform hover:scale-105"
             aria-label="Toggle theme"
           >
             {/* Sun Icon for Light Mode */}
