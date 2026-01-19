@@ -9,9 +9,9 @@ const TaskCard = ({ task }) => {
         : 'hover:border-yellow-500 dark:hover:border-yellow-500'
       }`}
     >
-      <div className="p-5">
+      <div className="p-5 flex flex-col h-full">
         
-        {/* Header: ID and Status Badge */}
+        {/*ID and Status Badge */}
         <div className="flex items-center justify-between mb-3">
           <span className="text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wide">
             Task #{task.id}
@@ -37,11 +37,11 @@ const TaskCard = ({ task }) => {
         </div>
 
         {/* Task Title */}
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3 line-clamp-2 capitalize">
+        <h3 className="text-lg grow font-semibold text-gray-900 dark:text-white mb-3 line-clamp-2 capitalize">
           {task.title}
         </h3>
 
-        {/* Footer: User ID and View Details Button */}
+        {/*User ID and View Details Button */}
         <div className="flex items-center justify-end pt-3 border-t border-gray-200 dark:border-gray-600">
           
 

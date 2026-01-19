@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import TaskCard from "../components/TaskCard";
+import { useDebounce } from "../hooks/useDebounce";
 
 const Tasks = () => {
   const [tasks, setTasks] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredTasks, setFilteredTasks] = useState([]);
+
+  const debouncedSearchQuery = useDebounce(searchQuery, 500);
 
   const tasksPerPage = 20;
   const totalTasks = 200;
@@ -28,6 +33,21 @@ const Tasks = () => {
       });
   }, [currentPage]);
 
+  useEffect(() => {
+    if (debouncedSearchQuery.trim() === "") {
+      setFilteredTasks(tasks);
+    } else {
+      const filtered = tasks.filter((task) =>
+        task.title.toLowerCase().includes(debouncedSearchQuery.toLowerCase())
+      );
+      setFilteredTasks(filtered);
+    }
+  }, [debouncedSearchQuery, tasks]);
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
   const handlePrevious = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
@@ -44,17 +64,20 @@ const Tasks = () => {
 
   return (
     <div className="bg-[#94b3f7] dark:bg-[#0c1434] py-10">
-      <div className="flex justify-between items-center mx-10 max-w-7xl md:mx-auto rounded-md  bg-sky-600 dark:bg-gray-700 p-5 text-white" >
-        <h1 className="text-2xl font-bold ">
-          ALL TASKS
-        </h1>
+      <div className="flex flex-col md:flex-row lg:flex-row justify-between items-center mx-10 max-w-7xl md:mx-auto rounded-md  bg-sky-600 dark:bg-gray-700 p-5 text-white">
+        <h1 className="text-2xl font-bold ">ALL TASKS</h1>
         <div className="relative max-w-sm">
           <input
+            value={searchQuery}
+            onChange={handleSearchChange}
             className="w-full py-2 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none hover:ring-2 hover:ring-blue-500 hover:border-blue-500"
             type="search"
-            placeholder="Search"
+            placeholder="Search your task"
           />
-          <button className="absolute inset-y-0 right-0 flex items-center px-4 text-gray-700 bg-gray-100 border border-gray-300 rounded-r-md hover:bg-gray-200 focus:outline-none hover:ring-2 hover:ring-blue-500 hover:border-blue-500">
+          <div
+            type="button"
+            className="absolute inset-y-0 right-0 flex items-center px-4 text-gray-700 bg-gray-100 border border-gray-300 rounded-r-md hover:bg-gray-200 focus:outline-none"
+          >
             <svg
               className="h-5 w-5"
               fill="currentColor"
@@ -62,12 +85,12 @@ const Tasks = () => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M14.795 13.408l5.204 5.204a1 1 0 01-1.414 1.414l-5.204-5.204a7.5 7.5 0 111.414-1.414zM8.5 14A5.5 5.5 0 103 8.5 5.506 5.506 0 008.5 14z"
               />
             </svg>
-          </button>
+          </div>
         </div>
       </div>
 
@@ -75,14 +98,39 @@ const Tasks = () => {
         <div className="flex justify-center items-center my-20">
           <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-600"></div>
         </div>
+      ) : filteredTasks.length === 0 ? (
+        // No results found message
+        <div className="flex flex-col min-h-[45.8vh] items-center justify-center my-20 px-4">
+          <svg
+            className="w-24 h-24 text-gray-400 dark:text-gray-600 mb-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={1.5}
+              d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-2">
+            No tasks found
+          </h3>
+          <p className="text-gray-600 dark:text-gray-400 text-center">
+            {searchQuery.trim() !== ""
+              ? `No results for "${searchQuery}". Try a different search term.`
+              : "No tasks available at the moment."}
+          </p>
+        </div>
       ) : (
-        <div className="grid max-w-7xl mx-auto grid-cols-1 lg:grid-cols-4 md:grid-cols-2 my-10 gap-8 px-10 lg:px-0">
-          {tasks.map((task) => (
+        // Show tasks when found
+        <div className="grid auto-rows-min min-h-[54.6vh] max-w-7xl mx-auto grid-cols-1 lg:grid-cols-4 md:grid-cols-2 my-10 gap-8 px-10 lg:px-0">
+          {filteredTasks.map((task) => (
             <TaskCard key={task.id} task={task} />
           ))}
         </div>
       )}
-
       <div className="flex justify-center  items-center gap-8">
         <button
           disabled={currentPage === 1 || loading}
